@@ -2,16 +2,18 @@ package Main.Java;
 public class BST<E extends Comparable<E>> {
     private Node<E> root;
 
-    private static class Node<E> {
+    public static class Node<E> {
         E data;
         Node<E> left, right;
 
         public Node(E data) {
             this.data = data;
-            left = right = null;
         }
     }
 
+    protected Node<E> getRoot() {
+        return root;
+    }
     public BST() {
         root = null;
     }
@@ -87,4 +89,6 @@ public class BST<E extends Comparable<E>> {
     public boolean contains(E data) {
         return search(data) != null;
     }
+
+
 }
