@@ -31,5 +31,11 @@ public class BSTTest {
         assertNotNull(bst.search(80));
         assertNull(bst.search(100));
     }
-    
+
+    @Test
+    public void testSearchNonExistent() {
+        bst.insert(50);
+        assertNull(bst.search(100));
+    }
+
 }
