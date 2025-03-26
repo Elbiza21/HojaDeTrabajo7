@@ -32,4 +32,17 @@ public class Product implements Comparable<Product> {
         return String.format("SKU: %s | Nombre: %s | Categoría: %s | Precio Retail: %.2f | Precio Actual: %.2f",
                 sku, productName, category, priceRetail, priceCurrent);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return sku.equals(product.sku);
+    }
+
+    @Override
+    public int hashCode() {
+        return sku.hashCode();
+    }
 }
