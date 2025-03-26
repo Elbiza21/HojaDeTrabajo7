@@ -7,12 +7,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import Main.Java.Product;
 
 public class ProductBST {
     private BST<Product> bst;
 
     public ProductBST() {
         bst = new BST<>();
+    }
+
+    protected BST<Product>.Node<Product> getRootForTesting() {
+        return bst.getRoot();
     }
 
     public void loadFromCSV(String filePath) throws IOException {
