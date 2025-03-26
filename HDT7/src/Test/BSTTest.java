@@ -38,4 +38,11 @@ public class BSTTest {
         assertNull(bst.search(100));
     }
 
+    @Test
+    public void testInsertDuplicate() {
+        bst.insert(50);
+        bst.insert(50);
+        assertNotNull(bst.search(50));
+    }
+
 }
