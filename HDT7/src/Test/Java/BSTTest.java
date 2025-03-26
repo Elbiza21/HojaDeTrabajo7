@@ -3,6 +3,8 @@ package Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import Main.Java.BST;
+import Main.Java.Product;
 
 class BSTTest {
     private BST<Integer> integerBST;
@@ -25,6 +27,19 @@ class BSTTest {
         assertEquals(30, integerBST.search(30));
         assertEquals(70, integerBST.search(70));
         assertNull(integerBST.search(100));
+    }
+
+    @Test
+    void testTreeStructure() {
+        BST<Integer> bst = new BST<>();
+        bst.insert(50);
+        bst.insert(30);
+        bst.insert(70);
+
+        // Acceso solo en pruebas mediante reflexión o método protegido
+        BST<Integer>.Node<Integer> root = bst.getRoot();
+        assertNotNull(root);
+        assertEquals(50, root.data);
     }
 
     @Test
