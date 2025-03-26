@@ -6,6 +6,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+// Añade estos imports
+import java.util.List;
+import java.util.ArrayList;
+
 public class BSTTest {
     private BST<Integer> integerBST;
     private BST<Product> productBST;
