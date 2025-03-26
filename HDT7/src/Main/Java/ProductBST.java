@@ -20,6 +20,14 @@ public class ProductBST {
         return bst.getRoot();
     }
 
+    private void collectProducts(BST<Product>.Node<Product> node, List<Product> products) {
+        if (node != null) {
+            collectProducts(node.left, products); // Recorrer subárbol izquierdo
+            products.add(node.data);             // Agregar nodo actual
+            collectProducts(node.right, products); // Recorrer subárbol derecho
+        }
+    }
+
     public void loadFromCSV(String filePath) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -69,7 +77,7 @@ public class ProductBST {
 
     private List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
-        collectProducts(bst.getRoot(), products);
+        collectProducts(bst.getRoot(), products); // Ahora debería funcionar
         return products;
     }
 
