@@ -1,9 +1,11 @@
-package Test;
+package Test.Java;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
+import Main.Java.ProductBST ;
+import Main.Java.Product;
 
 class ProductBSTTest {
     private ProductBST productBST;
