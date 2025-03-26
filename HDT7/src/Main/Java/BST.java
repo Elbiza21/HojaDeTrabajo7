@@ -1,5 +1,4 @@
 package Main.Java;
-
 public class BST<E extends Comparable<E>> {
     private Node<E> root;
 
@@ -75,5 +74,17 @@ public class BST<E extends Comparable<E>> {
             System.out.println(root.data);
             inOrderDescendingRec(root.left);
         }
+    }
+    public int size() {
+        return sizeRec(root);
+    }
+
+    private int sizeRec(Node<E> node) {
+        if (node == null) return 0;
+        return 1 + sizeRec(node.left) + sizeRec(node.right);
+    }
+
+    public boolean contains(E data) {
+        return search(data) != null;
     }
 }
