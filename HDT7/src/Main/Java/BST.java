@@ -3,15 +3,13 @@ package Main.Java;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class BST<E extends Comparable<E>> {
-    private Node<E> root;
+    protected Node root;
 
-
-    public static class Node<E> {
-        E data;
-        Node<E> left;
-        Node<E> right;
+    public class Node {
+        public E data;
+        public Node left;
+        public Node right;
 
         public Node(E data) {
             this.data = data;
@@ -20,19 +18,17 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
-
     public BST() {
         this.root = null;
     }
-
 
     public void insert(E data) {
         root = insertRec(root, data);
     }
 
-    private Node<E> insertRec(Node<E> root, E data) {
+    private Node insertRec(Node root, E data) {
         if (root == null) {
-            root = new Node<>(data);
+            root = new Node(data);
             return root;
         }
 
@@ -45,13 +41,12 @@ public class BST<E extends Comparable<E>> {
         return root;
     }
 
-
     public E search(E key) {
-        Node<E> result = searchRec(root, key);
+        Node result = searchRec(root, key);
         return (result == null) ? null : result.data;
     }
 
-    private Node<E> searchRec(Node<E> root, E key) {
+    private Node searchRec(Node root, E key) {
         if (root == null || root.data.compareTo(key) == 0) {
             return root;
         }
@@ -63,23 +58,20 @@ public class BST<E extends Comparable<E>> {
         return searchRec(root.right, key);
     }
 
-
     public boolean contains(E data) {
         return search(data) != null;
     }
-
 
     public int size() {
         return sizeRec(root);
     }
 
-    private int sizeRec(Node<E> node) {
+    private int sizeRec(Node node) {
         if (node == null) {
             return 0;
         }
         return 1 + sizeRec(node.left) + sizeRec(node.right);
     }
-
 
     public List<E> inOrder() {
         List<E> elements = new ArrayList<>();
@@ -87,7 +79,7 @@ public class BST<E extends Comparable<E>> {
         return elements;
     }
 
-    private void inOrderRec(Node<E> node, List<E> elements) {
+    private void inOrderRec(Node node, List<E> elements) {
         if (node != null) {
             inOrderRec(node.left, elements);
             elements.add(node.data);
@@ -101,7 +93,7 @@ public class BST<E extends Comparable<E>> {
         return elements;
     }
 
-    private void inOrderDescendingRec(Node<E> node, List<E> elements) {
+    private void inOrderDescendingRec(Node node, List<E> elements) {
         if (node != null) {
             inOrderDescendingRec(node.right, elements);
             elements.add(node.data);
@@ -109,7 +101,7 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
-    protected Node<E> getRoot() {
+    public Node getRoot() {
         return root;
     }
 
