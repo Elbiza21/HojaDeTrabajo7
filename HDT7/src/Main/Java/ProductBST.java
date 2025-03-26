@@ -4,10 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import Main.Java.Product;
 
 public class ProductBST {
     private BST<Product> bst;
@@ -16,22 +14,10 @@ public class ProductBST {
         bst = new BST<>();
     }
 
-    protected BST<Product>.Node<Product> getRootForTesting() {
-        return bst.getRoot();
-    }
-
-    private void collectProducts(BST<Product>.Node<Product> node, List<Product> products) {
-        if (node != null) {
-            collectProducts(node.left, products); // Recorrer subárbol izquierdo
-            products.add(node.data);             // Agregar nodo actual
-            collectProducts(node.right, products); // Recorrer subárbol derecho
-        }
-    }
-
     public void loadFromCSV(String filePath) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
-            boolean firstLine = true; // Para saltar el encabezado
+            boolean firstLine = true;
 
             while ((line = br.readLine()) != null) {
                 if (firstLine) {
@@ -77,8 +63,15 @@ public class ProductBST {
 
     private List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
-        collectProducts(bst.getRoot(), products); // Ahora debería funcionar
+        collectProducts(bst.getRoot(), products);
         return products;
     }
 
+    private void collectProducts(BST<Product>.Node node, List<Product> products) {
+        if (node != null) {
+            collectProducts(node.left, products);
+            products.add(node.data);
+            collectProducts(node.right, products);
+        }
+    }
 }
