@@ -65,4 +65,20 @@ class BSTTest {
 
         assertEquals(p1, productBST.search(p1));
     }
+
+    @Test
+    void testSize() {
+        assertEquals(0, integerBST.size());
+        integerBST.insert(50);
+        assertEquals(1, integerBST.size());
+        integerBST.insert(30);
+        assertEquals(2, integerBST.size());
+    }
+
+    @Test
+    void testContains() {
+        integerBST.insert(50);
+        assertTrue(integerBST.contains(50));
+        assertFalse(integerBST.contains(100));
+    }
 }
