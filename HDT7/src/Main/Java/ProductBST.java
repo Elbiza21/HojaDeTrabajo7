@@ -67,5 +67,5 @@ public class ProductBST {
         collectProducts(bst.getRoot(), products);
         return products;
     }
-    
+
 }
